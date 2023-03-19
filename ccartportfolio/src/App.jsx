@@ -12,7 +12,7 @@ import './App.css';
 function App() {
 
     // check if user is logged in
-    const [ isAuth, setIsAuth ] = useState(false);
+    const [ isAuth, setIsAuth ] = useState(localStorage.getItem('isAuth'));
 
     const signUserOut = () => {
         signOut(auth).then(() => {
@@ -39,7 +39,7 @@ function App() {
 
                 <div className='container mt-5'>
                     <Routes>
-                        <Route path='/' element={<Home />} />
+                        <Route path='/' element={<Home isAuth={isAuth} />} />
                         <Route path='/create' element={<Create isAuth={isAuth} />} />
                         <Route path='/login' element={<Login setIsAuth={setIsAuth} />} />
                     </Routes>

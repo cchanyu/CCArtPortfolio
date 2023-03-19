@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getDocs, collection, deleteDoc, doc } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebase.config';
 
-const Home = () => {
+const Home = ({ isAuth }) => {
   
   const [ postLists, setPostList ] = useState([]);
   const [ loading, setLoading ] = useState(false);
@@ -37,9 +37,10 @@ const Home = () => {
         return (
           <div key={post.id} className='card mb-4 shadow shadow-sm'>
             <div className="card-body">
+              {isAuth && post.author.id === auth.currentUser.uid && 
               <div className='d-flex justify-content-end'>
                 <button className='btn btn-danger my-3 mx-3' onClick={() => {deletePost(post.id)}}>Delete Post</button>
-              </div>
+              </div>}
               <h5 className='card-title mb-3 fw-bold'>{post.title}</h5>
               <p className='card-title mb-3'>{post.post}</p>
               <p className='badge bg-dark'>{post.author.name}</p>
