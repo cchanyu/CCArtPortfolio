@@ -1,4 +1,5 @@
 {
+  "homepage": "https://cchanyu.github.io/CCArtPortfolio",
   "name": "ccartportfolio",
   "version": "0.1.0",
   "private": true,
@@ -24,6 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
